@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.circular(16),
                       ),
                     child: Container(
-                        padding: EdgeInsets.all(16),
+                        padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -108,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Expanded(
                                     child: Container(
+                                      padding: EdgeInsets.only(top: 16),
                                       color: Colors.lightGreen,
                                         child: Text('Entrx ${entries[index]}'),
                                     ),
@@ -117,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: RawMaterialButton(
                                       constraints: BoxConstraints(minHeight: 0, minWidth: 0),
                                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                      padding: EdgeInsets.fromLTRB(16, 0, 0, 16),
+                                      padding: EdgeInsets.fromLTRB(16, 8, 0, 20),
                                       onPressed: () {
                                         print("menu clicked");
                                       },
