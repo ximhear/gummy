@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    final List<String> entries = <String>['A', 'B', 'C'];
+    final List<String> entries = <String>['A', 'B', 'C', "d", "d", "a"];
     final List<int> colorCodes = <int>[600, 500, 100];
     return Scaffold(
       appBar: AppBar(
@@ -108,53 +108,68 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Expanded(
                                     child: Container(
+                                      color: Colors.lightGreen,
                                         child: Text('Entrx ${entries[index]}'),
                                     ),
                                   ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
+                                  Container(
+                                    color: Colors.orangeAccent,
+                                    child:
+//                                      Text("hello\nhello")
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
 //                                    mainAxisAlignment: MainAxisAlignment.center,
-//                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.zero,
-                                        color: Colors.purple,
-                                        child: IconButton(
-                                          padding: EdgeInsets.fromLTRB(8, 0, 0, 8),
-//                                          alignment: Alignment.topRight,
-                                          icon: Row(
-//                                      mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Container(
+//                                          padding: EdgeInsets.all(0),
+                                          color: Colors.purple,
+                                          child: Container(
+//                                            height: 10,
+                                            child: IconButton(
+                                              padding: EdgeInsets.fromLTRB(8, 0, 0, 16),
+                                              alignment: Alignment.topRight,
+                                              icon: Row(
+                                                mainAxisSize: MainAxisSize.min,
 //                                            mainAxisAlignment: MainAxisAlignment.start,
 //                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                color: Colors.red,
-                                                  child: Icon(GIcons.primitive_dot, size: 10,)
+                                                children: [
+                                                  Container(
+                                                    color: Colors.red,
+                                                      child: Icon(GIcons.primitive_dot, size: 10,)
+                                                  ),
+                                                  Container(
+                                                      color: Colors.red,
+                                                      child: Icon(GIcons.primitive_dot, size: 10,)
+                                                  ),
+                                                  Container(
+                                                      color: Colors.red,
+                                                      child: Icon(GIcons.primitive_dot, size: 10,)
+                                                  ),
+                                                ],
                                               ),
-                                              Container(
-                                                  color: Colors.red,
-                                                  child: Icon(GIcons.primitive_dot, size: 10,)
-                                              ),
-                                              Container(
-                                                  color: Colors.red,
-                                                  child: Icon(GIcons.primitive_dot, size: 10,)
-                                              ),
-                                            ],
+                                              onPressed: () {
+                                                debugPrint("menu pressed.");
+                                              },
+                                            ),
                                           ),
-                                          onPressed: () {
-                                            debugPrint("menu pressed.");
-                                          },
                                         ),
-                                      ),
-//                                      Expanded(
-//                                        child: SizedBox(),
-//                                      ),
-                                    ],
+//                                        Container(
+//                                          child: Text("empty    sdjls  1"),
+//                                        ),
+//                                        Container(
+//                                          child: Text("empty    sdjls  1"),
+//                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                            Text('Entry ${entries[index]}'),
+                            Container(
+                              color: Colors.blueAccent,
+                                padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                                child: Text('sdjfls sdj flsdj lsdj lsjdfl sjdlfj sdljf lsdjf lsdjf ljfsl Entry Hello, Hello l Entry Hello, Hello lEntry Hello, Hello lEntry Hello, Hello lEntry Hello, Hello lEntry Hello, Hello l     ${entries[index]}')),
                           ],
                         )
                     ),
