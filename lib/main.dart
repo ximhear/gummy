@@ -113,54 +113,37 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                   Container(
-                                    color: Colors.orangeAccent,
-                                    child:
-//                                      Text("hello\nhello")
-                                    Column(
-                                      mainAxisSize: MainAxisSize.min,
-//                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Container(
-//                                          padding: EdgeInsets.all(0),
-                                          color: Colors.purple,
-                                          child: Container(
-//                                            height: 10,
-                                            child: IconButton(
-                                              padding: EdgeInsets.fromLTRB(8, 0, 0, 16),
-                                              alignment: Alignment.topRight,
-                                              icon: Row(
-                                                mainAxisSize: MainAxisSize.min,
+                                    color: Colors.red,
+                                    child: RawMaterialButton(
+                                      constraints: BoxConstraints(minHeight: 0, minWidth: 0),
+                                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                      padding: EdgeInsets.fromLTRB(16, 0, 0, 16),
+                                      onPressed: () {
+                                        print("menu clicked");
+                                      },
+                                      child: Container(
+                                        color: Colors.purple,
+                                        child:
+                                          Row(
+                                            mainAxisSize: MainAxisSize.min,
 //                                            mainAxisAlignment: MainAxisAlignment.start,
 //                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    color: Colors.red,
-                                                      child: Icon(GIcons.primitive_dot, size: 10,)
-                                                  ),
-                                                  Container(
-                                                      color: Colors.red,
-                                                      child: Icon(GIcons.primitive_dot, size: 10,)
-                                                  ),
-                                                  Container(
-                                                      color: Colors.red,
-                                                      child: Icon(GIcons.primitive_dot, size: 10,)
-                                                  ),
-                                                ],
+                                            children: [
+                                              Container(
+                                                  color: Colors.red,
+                                                  child: Icon(GIcons.primitive_dot, size: 10,)
                                               ),
-                                              onPressed: () {
-                                                debugPrint("menu pressed.");
-                                              },
-                                            ),
+                                              Container(
+                                                  color: Colors.red,
+                                                  child: Icon(GIcons.primitive_dot, size: 10,)
+                                              ),
+                                              Container(
+                                                  color: Colors.red,
+                                                  child: Icon(GIcons.primitive_dot, size: 10,)
+                                              ),
+                                            ],
                                           ),
-                                        ),
-//                                        Container(
-//                                          child: Text("empty    sdjls  1"),
-//                                        ),
-//                                        Container(
-//                                          child: Text("empty    sdjls  1"),
-//                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 ],
