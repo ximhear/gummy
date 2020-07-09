@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gummy/GRow.dart';
 import 'package:gummy/icons/g_icons_icons.dart';
 
 void main() {
@@ -82,92 +83,17 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: ListView.separated(
-          padding: const EdgeInsets.all(0),
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              color: Colors.green,
-              padding: EdgeInsets.all(16),
-              child: Container(
-                child: Material(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.all(Radius.circular(16.0)),
-                  child: InkWell(
-                    splashColor: Colors.red,
-                      customBorder: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    child: Container(
-                        padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              color: Colors.cyan,
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      padding: EdgeInsets.only(top: 16),
-                                      color: Colors.lightGreen,
-                                        child: Text('Entrx ${entries[index]}'),
-                                    ),
-                                  ),
-                                  Container(
-                                    color: Colors.red,
-                                    child: RawMaterialButton(
-                                      constraints: BoxConstraints(minHeight: 0, minWidth: 0),
-                                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                      padding: EdgeInsets.fromLTRB(16, 8, 0, 20),
-                                      onPressed: () {
-                                        print("menu clicked");
-                                      },
-                                      child: Container(
-                                        color: Colors.purple,
-                                        child:
-                                          Row(
-                                            mainAxisSize: MainAxisSize.min,
-//                                            mainAxisAlignment: MainAxisAlignment.start,
-//                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                  color: Colors.red,
-                                                  child: Icon(GIcons.primitive_dot, size: 10,)
-                                              ),
-                                              Container(
-                                                  color: Colors.red,
-                                                  child: Icon(GIcons.primitive_dot, size: 10,)
-                                              ),
-                                              Container(
-                                                  color: Colors.red,
-                                                  child: Icon(GIcons.primitive_dot, size: 10,)
-                                              ),
-                                            ],
-                                          ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: Colors.blueAccent,
-                                padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
-                                child: Text('sdjfls sdj flsdj lsdj lsjdfl sjdlfj sdljf lsdjf lsdjf ljfsl Entry Hello, Hello l Entry Hello, Hello lEntry Hello, Hello lEntry Hello, Hello lEntry Hello, Hello lEntry Hello, Hello l     ${entries[index]}')),
-                          ],
-                        )
-                    ),
-                    onTap: () {
-                      debugPrint("row clicked");
-                    },
-                  ),
-                ),
-              ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.transparent,),
-        )
-      ),
+        padding: const EdgeInsets.all(16),
+        itemCount: entries.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            child: GRow(),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(
+          color: Colors.transparent,
+        ),
+      )),
 //      floatingActionButton: FloatingActionButton(
 //        onPressed: _incrementCounter,
 //        tooltip: 'Increment',
