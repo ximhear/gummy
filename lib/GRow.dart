@@ -6,7 +6,7 @@ import 'package:gummy/icons/g_icons_icons.dart';
 
 enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
 class GRow extends StatefulWidget {
-  GRow({Key key, this.title, this.count, this.source, this.target, this.onMenuPressed, this.menus}) : super(key: key);
+  GRow({Key key, this.title, this.count, this.source, this.target, this.editable, this.onMenuPressed, this.menus}) : super(key: key);
 
   final PopMenuButtonCallback onMenuPressed;
   final List<String> menus;
@@ -14,6 +14,7 @@ class GRow extends StatefulWidget {
   final String source;
   final String target;
   final int count;
+  final bool editable;
 
   @override
   _GRowState createState() => _GRowState();
@@ -75,25 +76,27 @@ class _GRowState extends State<GRow> {
                             ),
                           ),
                         ),
-                          PopupMenuButton<int>(
-                              onSelected: (int result) {
-                                  if (widget.onMenuPressed != null) {
-                                      widget.onMenuPressed(result);
-                                  }
-                              },
-                              itemBuilder: (BuildContext context) {
+                          if (widget.editable == true)...[
+                              PopupMenuButton<int>(
+                                  onSelected: (int result) {
+                                      if (widget.onMenuPressed != null) {
+                                          widget.onMenuPressed(result);
+                                      }
+                                  },
+                                  itemBuilder: (BuildContext context) {
 
-                                  if (widget.menus == null) {
-                                      return <PopupMenuEntry<int>>[];
+                                      if (widget.menus == null) {
+                                          return <PopupMenuEntry<int>>[];
+                                      }
+                                      return List.generate(widget.menus.length, (index) {
+                                          return PopupMenuItem<int>(
+                                              value: index,
+                                              child: Text(widget.menus[index]),
+                                          );
+                                      });
                                   }
-                                  return List.generate(widget.menus.length, (index) {
-                                      return PopupMenuItem<int>(
-                                          value: index,
-                                          child: Text(widget.menus[index]),
-                                      );
-                                  });
-                              }
-                          ),
+                              ),
+                          ],
                       ],
                     ),
                   ),

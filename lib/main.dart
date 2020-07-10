@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gummy/GRow.dart';
+import 'package:gummy/GSection.dart';
 import 'package:gummy/icons/g_icons_icons.dart';
 
 void main() {
@@ -50,6 +51,21 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+enum GRowDataType {
+  title,
+  content
+}
+
+class GRowData {
+  GRowData({this.type, this.title, this.count, this.source, this.target, this.editable});
+
+  GRowDataType type;
+  String title;
+  int count;
+  String source;
+  String target;
+  bool editable;
+}
 
 class _MyHomePageState extends State<MyHomePage> {
 
@@ -75,6 +91,30 @@ class _MyHomePageState extends State<MyHomePage> {
     final List<String> sources = <String>['en-US', 'ko-KR', 'de-DE', "fr-FR", "ja-JP", "zh-CN"];
     final List<String> targets = <String>['ko-KR', 'en-US', 'ko-KR', "ja-JP", "zh-CN", "en-US"];
     final List<int> counts = <int>[80, 90, 100, 100, 40, 89];
+
+    List<GRowData> rows = <GRowData>[];
+    rows = List.generate(titles.length, (index){
+      bool editable = true;
+      if (index < 3) {
+        editable = false;
+      }
+        return GRowData(
+          type: GRowDataType.content,
+          title: titles[index],
+          count: counts[index],
+          source: sources[index],
+          target: targets[index],
+          editable: editable,
+        );
+    });
+    rows.insert(3, GRowData(
+        type: GRowDataType.title,
+        title: "mine"
+    ));
+    rows.insert(0, GRowData(
+        type: GRowDataType.title,
+        title: "gbulary"
+    ));
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -86,10 +126,15 @@ class _MyHomePageState extends State<MyHomePage> {
         // in the middle of the parent.
         child: ListView.separated(
         padding: const EdgeInsets.all(16),
-        itemCount: titles.length,
+        itemCount: rows.length,
         itemBuilder: (BuildContext context, int index) {
+          if (rows[index].type == GRowDataType.title) {
+            return Container(
+              child: GSection(title: rows[index].title)
+            );
+          }
           return Container(
-            child: GRow(title: titles[index], count: counts[index], source: sources[index], target: targets[index], onMenuPressed: (menuIndex) {
+            child: GRow(title: rows[index].title, count: rows[index].count, source: rows[index].source, target: rows[index].target, editable: rows[index].editable, onMenuPressed: (menuIndex) {
               debugPrint("menu clicked : $index - $menuIndex");
             },
             menus: ["수정", "해제"],),
