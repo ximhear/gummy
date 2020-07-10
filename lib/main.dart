@@ -67,6 +67,12 @@ class GRowData {
   bool editable;
 }
 
+class GMenuItem {
+  GMenuItem({this.title, this.value});
+  String title;
+  int value;
+}
+
 class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
@@ -134,10 +140,10 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }
           return Container(
-            child: GRow(title: rows[index].title, count: rows[index].count, source: rows[index].source, target: rows[index].target, editable: rows[index].editable, onMenuPressed: (menuIndex) {
+            child: GRow(title: rows[index].title, count: rows[index].count, source: rows[index].source, target: rows[index].target, onMenuPressed: (menuIndex) {
               debugPrint("menu clicked : $index - $menuIndex");
             },
-            menus: ["수정", "해제"],),
+            menus: rows[index].editable == true ? [GMenuItem(title: "수정", value: 0), GMenuItem(title: "해제", value: 1)] : [GMenuItem(title: "해제", value: 1)]),
           );
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(
