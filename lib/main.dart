@@ -71,8 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    final List<String> entries = <String>['A', 'B', 'C', "d", "d", "a"];
-    final List<int> colorCodes = <int>[600, 500, 100];
+    final List<String> titles = <String>['해커스 토익', '수능 2020', 'IBT', "텝스", "중학영어", "고등영단어"];
+    final List<String> sources = <String>['en-US', 'ko-KR', 'de-DE', "fr-FR", "ja-JP", "zh-CN"];
+    final List<String> targets = <String>['ko-KR', 'en-US', 'ko-KR', "ja-JP", "zh-CN", "en-US"];
+    final List<int> counts = <int>[80, 90, 100, 100, 40, 89];
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -84,13 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
         // in the middle of the parent.
         child: ListView.separated(
         padding: const EdgeInsets.all(16),
-        itemCount: entries.length,
+        itemCount: titles.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            child: GRow(onMenuPressed: (menuIndex) {
+            child: GRow(title: titles[index], count: counts[index], source: sources[index], target: targets[index], onMenuPressed: (menuIndex) {
               debugPrint("menu clicked : $index - $menuIndex");
             },
-            menus: ["aaa", "bbb"],),
+            menus: ["수정", "해제"],),
           );
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(

@@ -6,10 +6,14 @@ import 'package:gummy/icons/g_icons_icons.dart';
 
 enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
 class GRow extends StatefulWidget {
-  GRow({Key key, this.onMenuPressed, this.menus}) : super(key: key);
+  GRow({Key key, this.title, this.count, this.source, this.target, this.onMenuPressed, this.menus}) : super(key: key);
 
   final PopMenuButtonCallback onMenuPressed;
   final List<String> menus;
+  final String title;
+  final String source;
+  final String target;
+  final int count;
 
   @override
   _GRowState createState() => _GRowState();
@@ -41,7 +45,7 @@ class _GRowState extends State<GRow> {
                       children: [
                         Expanded(
                           child: Container(
-                              height: 35,
+                              height: 40,
                             padding: EdgeInsets.only(top: 16),
 //                              color: Colors.lightGreen,
                             child: Row(
@@ -55,7 +59,7 @@ class _GRowState extends State<GRow> {
                                                 color: Colors.black12
                                             ),
                                         ),
-                                        child: Image(image: AssetImage('images/france.png'))
+                                        child: languageImage(widget.source),
                                     ),
                                   ),
                                   Container(
@@ -65,7 +69,7 @@ class _GRowState extends State<GRow> {
                                               color: Colors.black12
                                           ),
                                       ),
-                                      child: Image(image: AssetImage('images/south-korea.png'))
+                                      child: languageImage(widget.target),
                                   ),
                               ],
                             ),
@@ -101,13 +105,13 @@ class _GRowState extends State<GRow> {
                             textBaseline: TextBaseline.alphabetic,
                             children: [
                                 Text(
-                                    '해커스 토익',
+                                    widget.title,
                                     style: TextStyle(fontSize: 24,
                                         color: Colors.black54,
                                     ),
                                 ),
                                 Text(
-                                    ' 100',
+                                    ' ${widget.count}',
                                     style: TextStyle(fontSize:  14,
                                     color: Colors.black26),
                                 ),
@@ -122,5 +126,24 @@ class _GRowState extends State<GRow> {
         ),
       ),
     );
+  }
+
+  Image languageImage(String code) {
+      if (code == "en-US") {
+          return Image(image: AssetImage('images/united-states.png'));
+      }
+      else if (code == "ja-JP") {
+          return Image(image: AssetImage('images/japan.png'));
+      }
+      else if (code == "zh-CN") {
+          return Image(image: AssetImage('images/china.png'));
+      }
+      else if (code == "fr-FR") {
+          return Image(image: AssetImage('images/france.png'));
+      }
+      else if (code == "de-DE") {
+          return Image(image: AssetImage('images/germany.png'));
+      }
+      return Image(image: AssetImage('images/south-korea.png'));
   }
 }
