@@ -48,6 +48,13 @@ flutter:
     - family: GIcons
       fonts:
         - asset: fonts/GIcons.ttf
+  assets:
+    - images/south-korea.png
+    - images/china.png
+    - images/france.png
+    - images/germany.png
+    - images/japan.png
+    - images/united-states.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

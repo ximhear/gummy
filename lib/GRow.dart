@@ -41,9 +41,34 @@ class _GRowState extends State<GRow> {
                       children: [
                         Expanded(
                           child: Container(
+                              height: 35,
                             padding: EdgeInsets.only(top: 16),
 //                              color: Colors.lightGreen,
-                            child: Text('Title'),
+                            child: Row(
+                              children: <Widget>[
+                                  Container(
+                                      padding: EdgeInsets.only(right: 8),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 1.0,
+                                                color: Colors.black12
+                                            ),
+                                        ),
+                                        child: Image(image: AssetImage('images/france.png'))
+                                    ),
+                                  ),
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              width: 1.0,
+                                              color: Colors.black12
+                                          ),
+                                      ),
+                                      child: Image(image: AssetImage('images/south-korea.png'))
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                           PopupMenuButton<int>(
