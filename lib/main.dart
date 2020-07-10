@@ -87,7 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: entries.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            child: GRow(),
+            child: GRow(onMenuPressed: (menuIndex) {
+              debugPrint("menu clicked : $index - $menuIndex");
+            },
+            menus: ["aaa", "bbb"],),
           );
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(
