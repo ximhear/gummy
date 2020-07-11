@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:gummy/main.dart';
+import 'package:gummy/GMenuItem.dart';
 
 typedef PopMenuButtonCallback = void Function(int index);
 class WordPkgRow extends StatefulWidget {

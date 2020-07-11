@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gummy/GMenuItem.dart';
 import 'package:gummy/WordPkgRow.dart';
+import 'package:gummy/WordPkgRowData.dart';
 import 'package:gummy/WordPkgSection.dart';
 
 void main() {
@@ -50,39 +52,8 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-enum WordPkgRowDataType {
-  title,
-  content
-}
-
-class WordPkgRowData {
-  WordPkgRowData({this.type, this.title, this.count, this.source, this.target, this.editable});
-
-  WordPkgRowDataType type;
-  String title;
-  int count;
-  String source;
-  String target;
-  bool editable;
-}
-
-class GMenuItem {
-  GMenuItem({this.title, this.value});
-  String title;
-  int value;
-}
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
