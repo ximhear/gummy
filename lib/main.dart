@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gummy/GRow.dart';
-import 'package:gummy/GSection.dart';
-import 'package:gummy/icons/g_icons_icons.dart';
+import 'package:gummy/WordPkgRow.dart';
+import 'package:gummy/WordPkgSection.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,15 +50,15 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-enum GRowDataType {
+enum WordPkgRowDataType {
   title,
   content
 }
 
-class GRowData {
-  GRowData({this.type, this.title, this.count, this.source, this.target, this.editable});
+class WordPkgRowData {
+  WordPkgRowData({this.type, this.title, this.count, this.source, this.target, this.editable});
 
-  GRowDataType type;
+  WordPkgRowDataType type;
   String title;
   int count;
   String source;
@@ -98,14 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
     final List<String> targets = <String>['ko-KR', 'en-US', 'ko-KR', "ja-JP", "zh-CN", "en-US"];
     final List<int> counts = <int>[80, 90, 100, 100, 40, 89];
 
-    List<GRowData> rows = <GRowData>[];
+    List<WordPkgRowData> rows = <WordPkgRowData>[];
     rows = List.generate(titles.length, (index){
       bool editable = true;
       if (index < 3) {
         editable = false;
       }
-        return GRowData(
-          type: GRowDataType.content,
+        return WordPkgRowData(
+          type: WordPkgRowDataType.content,
           title: titles[index],
           count: counts[index],
           source: sources[index],
@@ -113,12 +112,12 @@ class _MyHomePageState extends State<MyHomePage> {
           editable: editable,
         );
     });
-    rows.insert(3, GRowData(
-        type: GRowDataType.title,
+    rows.insert(3, WordPkgRowData(
+        type: WordPkgRowDataType.title,
         title: "mine"
     ));
-    rows.insert(0, GRowData(
-        type: GRowDataType.title,
+    rows.insert(0, WordPkgRowData(
+        type: WordPkgRowDataType.title,
         title: "gbulary"
     ));
     return Scaffold(
@@ -134,17 +133,13 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(16),
         itemCount: rows.length,
         itemBuilder: (BuildContext context, int index) {
-          if (rows[index].type == GRowDataType.title) {
-            return Container(
-              child: GSection(title: rows[index].title)
-            );
+          if (rows[index].type == WordPkgRowDataType.title) {
+            return WordPkgSection(title: rows[index].title);
           }
-          return Container(
-            child: GRow(title: rows[index].title, count: rows[index].count, source: rows[index].source, target: rows[index].target, onMenuPressed: (menuIndex) {
-              debugPrint("menu clicked : $index - $menuIndex");
-            },
-            menus: rows[index].editable == true ? [GMenuItem(title: "수정", value: 0), GMenuItem(title: "해제", value: 1)] : [GMenuItem(title: "해제", value: 1)]),
-          );
+          return WordPkgRow(title: rows[index].title, count: rows[index].count, source: rows[index].source, target: rows[index].target, onMenuPressed: (menuIndex) {
+            debugPrint("menu clicked : $index - $menuIndex");
+          },
+          menus: rows[index].editable == true ? [GMenuItem(title: "수정", value: 0), GMenuItem(title: "해제", value: 1)] : [GMenuItem(title: "해제", value: 1)]);
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(
           color: Colors.transparent,

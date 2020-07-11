@@ -5,8 +5,8 @@ import 'package:gummy/PopMenuButton.dart';
 import 'package:gummy/icons/g_icons_icons.dart';
 import 'package:gummy/main.dart';
 
-class GRow extends StatefulWidget {
-  GRow({Key key, this.title, this.count, this.source, this.target, this.onMenuPressed, this.menus}) : super(key: key);
+class WordPkgRow extends StatefulWidget {
+    WordPkgRow({Key key, this.title, this.count, this.source, this.target, this.onMenuPressed, this.menus}) : super(key: key);
 
   final PopMenuButtonCallback onMenuPressed;
   final List<GMenuItem> menus;
@@ -16,10 +16,10 @@ class GRow extends StatefulWidget {
   final int count;
 
   @override
-  _GRowState createState() => _GRowState();
+  _WordPkgRowState createState() => _WordPkgRowState();
 }
 
-class _GRowState extends State<GRow> {
+class _WordPkgRowState extends State<WordPkgRow> {
   @override
   Widget build(BuildContext context) {
     return Container(

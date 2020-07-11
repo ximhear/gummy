@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GSection extends StatelessWidget {
-    GSection({Key key, this.title}) : super(key: key);
+class WordPkgSection extends StatelessWidget {
+    WordPkgSection({Key key, this.title}) : super(key: key);
    String title;
 
   @override
