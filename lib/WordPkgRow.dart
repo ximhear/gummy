@@ -1,10 +1,8 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gummy/PopMenuButton.dart';
-import 'package:gummy/icons/g_icons_icons.dart';
 import 'package:gummy/main.dart';
 
+typedef PopMenuButtonCallback = void Function(int index);
 class WordPkgRow extends StatefulWidget {
     WordPkgRow({Key key, this.title, this.count, this.source, this.target, this.onMenuPressed, this.menus}) : super(key: key);
 
